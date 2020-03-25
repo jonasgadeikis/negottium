@@ -1,3 +1,12 @@
-body {
-    background-color: lightgray;
-}
+@import 'colors.scss';
+@import 'global.scss';
+@import 'components/Button.scss';
+@import 'components/Input.scss';
+@import 'components/Modal.scss';
+@import 'components/Panel.scss';
+@import 'components/Select.scss';
+@import 'components/Title.scss';
+@import 'modules/Board/index.scss';
+@import 'modules/Sidebar/index.scss';
+@import 'modules/Task/index.scss';
+@import 'views/Boards/Board/Column.scss';

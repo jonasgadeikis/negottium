@@ -1,0 +1,28 @@
+@import 'assets/css/colors.scss';
+
+.Input {
+  display: flex;
+  flex-direction: column;
+
+  &-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    color: $color-text;
+  }
+
+  &-value {
+    padding: 10px;
+    font-size: 18px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $color-primary;
+    box-shadow: 0 0 10px 0 rgba(219, 219, 219, 1);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

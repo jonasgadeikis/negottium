@@ -8,6 +8,7 @@ use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
+ * @ORM\Table(name="task")
  */
 class Task
 {
@@ -19,7 +20,7 @@ class Task
     const TASK_ACTION_COMPLETE = 'complete';
 
     /**
-     * @JMS\Groups({"board.single"})
+     * @JMS\Groups({"board.single", "task.default"})
      * @JMS\Type("int")
      *
      * @ORM\Id()

@@ -1,0 +1,56 @@
+@import '../../../colors.scss';
+
+.Task {
+  padding: 10px;
+  min-height: 60px;
+  max-height: 60px;
+  cursor: move;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $color-white;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &-title {
+    color: $color-columnTitle;
+    width: 90%;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-priority {
+    &--high {
+      color: $color-error;
+    }
+
+    &--medium {
+      color: $color-warning;
+    }
+
+    &--low {
+      color: $color-priorityLow;
+    }
+  }
+
+  &-action {
+    @media (min-width: 400px) {
+      display: none;
+    }
+  }
+
+  &-complete {
+    text-decoration: line-through;
+  }
+}

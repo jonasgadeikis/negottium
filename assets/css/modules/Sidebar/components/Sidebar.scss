@@ -1,0 +1,11 @@
+@import '../../../colors.scss';
+
+.Sidebar {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient($color-primary, $color-secondary);
+  box-shadow: 0 0 10px 0 $color-sidebarShadow;
+}

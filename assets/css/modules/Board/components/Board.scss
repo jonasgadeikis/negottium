@@ -1,0 +1,16 @@
+@import '../../../colors.scss';
+
+.Board {
+  padding: 20px;
+  color: $color-title;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  &-iconColor {
+    color: $color-primary;
+  }
+}
