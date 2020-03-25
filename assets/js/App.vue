@@ -1,15 +1,16 @@
 <template>
-    <div>
+    <div class="app">
+        <Sidebar />
         <router-view />
     </div>
 </template>
 
 <script>
+    import Sidebar from './modules/Sidebar/components/Sidebar';
+
     export default {
-        name: "App"
+        components: {
+            Sidebar,
+        },
     }
 </script>
-
-<style scoped>
-
-</style>

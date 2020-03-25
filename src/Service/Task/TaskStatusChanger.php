@@ -25,7 +25,7 @@ class TaskStatusChanger
 
     /**
      * @param Task $task
-     * @return null
+     * @return array
      * @throws ORMException
      * @throws OptimisticLockException
      */
