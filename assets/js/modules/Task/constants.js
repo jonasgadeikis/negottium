@@ -1,8 +1,17 @@
 export default {
     TASK_PRIORITY: {
-        LOW: 0,
-        MEDIUM: 1,
-        HIGH: 2,
+        LOW: {
+            NAME: 'Low',
+            VALUE: 0,
+        },
+        MEDIUM: {
+            NAME: 'Medium',
+            VALUE: 1,
+        },
+        HIGH: {
+            NAME: 'High',
+            VALUE: 2,
+        },
     },
 
     TASK_ACTIONS: {
