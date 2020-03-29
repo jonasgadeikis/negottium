@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="BoardsMenu">
         <Title name="My Boards" />
 
         <Panel v-for="board in GET_BOARDS" :key="board.id">
@@ -24,10 +24,10 @@
 </template>
 
 <script>
-    import {mapActions, mapGetters} from 'vuex';
-    import {namespace as BOARD_NAMESPACE} from '../../modules/Board/store';
-    import {BOARD_ACTIONS} from '../../modules/Board/store/actions';
-    import {BOARD_GETTERS} from '../../modules/Board/store/getters';
+    import { mapActions, mapGetters } from 'vuex';
+    import { namespace as BOARD_NAMESPACE } from '../../modules/Board/store';
+    import { BOARD_ACTIONS } from '../../modules/Board/store/actions';
+    import { BOARD_GETTERS } from '../../modules/Board/store/getters';
     import Board from '../../modules/Board/components/Board';
     import Button from '../../components/Button';
     import Create from '../../modules/Board/components/Create';
@@ -43,7 +43,7 @@
 
         data() {
             return {
-                token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODQ3ODI0MzEsImV4cCI6MTU4NTM4NzIzMSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiam9uYXMxMjNAdGVzdC5jb20ifQ.cYyQo8reQPQ2A4CKXd3m3Nc0zYK4nTnerBjNXE4KfgDgaMpHg9BUya6SyoQy43e2iP_I10JwHgjO2h4NIWl3MaQWDq4VdRKQ_Ei09zNOWF9oH41WYxTgaAVy6KyvGVWwKCGMBWJwaQuLUm_Fv1JVIlkDoeL3jSRVr94UHkrgxcqzmbrwzoBPhgvoKZzRg6TYjj4qr1fqoF8JL5kOhULDRe9bQtemRzWMsQ8o7SqoBP0h_HXtULeef53OpJwezFtaZDQP8_sdqc9MFI0Yr7_Ji3GH08AL88ojJKb6GZwKiNxg4VWkNtTe99OTDaHMWDHdntClzuH4wXQHPOT_OSCPFC0wE_rj6mSLhXxXndFDBEfsTuyPEtObMpGvtJY-LbIbYD7X1wAyXFVw4sOqSFO5w2-xDkEJM5DmU_JFH49fyhqqBO5z-OayCOd8mS1tIbnBc54aypW62UHOqUQ-UKK75ajxbm0Nhi5OkQuX2HYc6baB3OnEEuS5XHWkVNrX4Iaj5OrRr0G6OBl9FYpLBV-1HQWLX4MeKsyQOaKIlG78vWaVxQZq-U_ilhup-SzxiSdfIJ3shaaskYMFbNM4XPWrlSWdR9nP0tjJHUAiWm0E8rRX1vrGg0YevkeWN4FHs1SRkRVfNLy4QRUI9xuL-3KcKRyCgGR5HVJz-C3BDgm9pm8',
+                token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODU0ODE3MDUsImV4cCI6MTU4NjA4NjUwNSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiam9uYXMxMjNAdGVzdC5jb20ifQ.N0oqUp5cLrD_OEnSfTbFJXQPDFDzFrG2lGpaGPC3cAqWWvWne_R-30fbBuP1un5FelGiSbqBdvmiFz8VvacHEkofUK6TE5dX4qW4out3XKxOY_5jOt8C4XF3zmmIRJnSyNjV9QCzMdAo7Zhn5ld5ThJXammJgvJrJhAq_hsXZGj5zLlaqMwXCgCpLVtEyy6NQ7kGLZuverSBP93XzvV3XaZNTSnztB0aGFiZpOOrADfhpcoWWPxG1SWdOv2VhNRr1Eu2LN_Eo17lHAeTZ8WXwA7l3gLibB5bVyU0REwMO8h_HVaQ20fiRsFNMDe7Wkn9xdl76OWRdnkYWfPeaz_h7YhwJjQMESxj2Wb7lIvcpw7O_G1Ai-zLtXKvYBTYFcX_YM4mJi8cZ0KyPqcvndGwd_F3Yq4PueSIO6kVJOWrAmbkLxlii7OLXy5t6PnkQUVKhG1-EsjY_o5r87XxEgMxjInzWolXIht99mDWqu2LISV6DtYDXoPqvLBzAgH9BXbia5Vvwb8gDqb_DLPK_uw7anwnnhnZryCaggOB-sloz-RH4GmzGP7o1_-4W_DBfLRVQpc8Ai2bIk3wqjlvnpGmAFsCg2Dv4ocNvva7HgruEONKuuGP69d8zU8otwS0IdHj6AkTsxJJSvWEtM04BgwizqQHFDRHLwyRdJTJixyTPnY',
             }
         },
 

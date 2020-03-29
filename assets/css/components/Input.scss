@@ -20,9 +20,13 @@
     border: none;
     border-bottom: 2px solid $color-primary;
     box-shadow: 0 0 10px 0 rgba(219, 219, 219, 1);
+    transition: all 0.3s linear;
+    resize: none;
+    font-family: Arial, sans-serif;
 
     &:focus {
       outline: none;
+      border-bottom: 2px solid $color-secondary;
     }
   }
 }

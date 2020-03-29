@@ -7,6 +7,7 @@ export const BOARD_MUTATIONS = {
     SET_COLUMNS_COLOR: 'SET_COLUMNS_COLOR',
     SET_TASK_STATUS: 'SET_TASK_STATUS',
     SET_CREATED_BOARD: 'SET_CREATED_BOARD',
+    SET_CREATED_TASK: 'SET_CREATED_TASK',
 };
 
 export default {
@@ -40,5 +41,11 @@ export default {
 
     [BOARD_MUTATIONS.SET_CREATED_BOARD]: (state, payload) => {
         state[BOARD_STATE.BOARDS].push(payload);
+        document.getElementById('modal').style.display = 'none';
+    },
+
+    [BOARD_MUTATIONS.SET_CREATED_TASK]: (state, payload) => {
+        state[BOARD_STATE.ACTIVE_BOARD].tasks.push(payload);
+        document.getElementById('modal').style.display = 'none';
     },
 };

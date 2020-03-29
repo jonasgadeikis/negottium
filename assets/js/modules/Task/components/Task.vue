@@ -10,16 +10,16 @@
             <span
                 class="material-icons Task-icon"
                 :class="[
-                    task.priority === TASK_CONSTANTS.TASK_PRIORITY.HIGH
+                    task.priority === TASK_CONSTANTS.TASK_PRIORITY.HIGH.VALUE
                         ? 'Task-priority--high'
-                        : task.priority === TASK_CONSTANTS.TASK_PRIORITY.MEDIUM
+                        : task.priority === TASK_CONSTANTS.TASK_PRIORITY.MEDIUM.VALUE
                         ? 'Task-priority--medium'
                         : 'Task-priority--low'
                 ]"
             >
-                {{ task.priority === TASK_CONSTANTS.TASK_PRIORITY.HIGH
+                {{ task.priority === TASK_CONSTANTS.TASK_PRIORITY.HIGH.VALUE
                     ? 'keyboard_arrow_up'
-                    : task.priority === TASK_CONSTANTS.TASK_PRIORITY.MEDIUM
+                    : task.priority === TASK_CONSTANTS.TASK_PRIORITY.MEDIUM.VALUE
                     ? 'remove'
                     : 'keyboard_arrow_down'
                 }}

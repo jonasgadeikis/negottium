@@ -1,11 +1,13 @@
+@import 'assets/css/animations.scss';
 @import 'assets/css/colors.scss';
 
 .Select {
   display: flex;
   flex-direction: column;
 
-  &-name {
+  &-label {
     padding: 5px 10px;
+    color: $color-text;
   }
 
   &-block {

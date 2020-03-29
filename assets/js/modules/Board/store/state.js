@@ -8,6 +8,7 @@ export const BOARD_STATE = {
 export default {
     [BOARD_STATE.BOARDS]: [],
     [BOARD_STATE.ACTIVE_BOARD]: {
+        id: '',
         name: '',
         tasks: [],
     },

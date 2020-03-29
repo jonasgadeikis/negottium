@@ -1,11 +1,11 @@
 <template>
     <label class="Input">
-        <input
+        <textarea
             :maxlength="maximum"
             class="Input-value"
             v-model="value"
             @input="$emit('update:model', value)"
-        >
+        />
 
         <div class="Input-label">
             <span>{{ name }}</span>
@@ -30,6 +30,7 @@
                 required: true,
             },
         },
+
         data() {
             return {
                 value: '',

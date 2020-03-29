@@ -1,6 +1,7 @@
 import {BOARD_MUTATIONS} from './mutations';
 import { GET, POST } from '../../../api';
 import TASK_CONSTANTS from '../../Task/constants';
+import {TASK_ACTIONS} from '../../Task/store/actions';
 
 export const BOARD_ACTIONS = {
     FETCH_BOARDS: 'FETCH_BOARDS',
@@ -9,6 +10,7 @@ export const BOARD_ACTIONS = {
     RESET_COLUMNS_COLOR: 'RESET_COLUMNS_COLOR',
     CHANGE_STATUS: 'CHANGE_STATUS',
     CREATE_BOARD: 'CREATE_BOARD',
+    CREATE_TASK: 'CREATE_TASK',
 };
 
 export default {
@@ -61,7 +63,14 @@ export default {
 
         POST('board/create', data, payload.token).then(response => {
             commit(BOARD_MUTATIONS.SET_CREATED_BOARD, response.data);
-            document.getElementById('modal').style.display = 'none';
+        }).catch(error => {
+            console.log(error);
+        });
+    },
+
+    [BOARD_ACTIONS.CREATE_TASK]: ({commit}, payload) => {
+        POST('task/create', payload, payload.token).then(response => {
+            commit(BOARD_MUTATIONS.SET_CREATED_TASK, response.data);
         }).catch(error => {
             console.log(error);
         });
