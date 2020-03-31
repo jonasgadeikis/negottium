@@ -1,7 +1,6 @@
 import {BOARD_MUTATIONS} from './mutations';
 import { GET, POST } from '../../../api';
 import TASK_CONSTANTS from '../../Task/constants';
-import {TASK_ACTIONS} from '../../Task/store/actions';
 
 export const BOARD_ACTIONS = {
     FETCH_BOARDS: 'FETCH_BOARDS',
@@ -11,6 +10,7 @@ export const BOARD_ACTIONS = {
     CHANGE_STATUS: 'CHANGE_STATUS',
     CREATE_BOARD: 'CREATE_BOARD',
     CREATE_TASK: 'CREATE_TASK',
+    TOGGLE_MODAL: 'TOGGLE_MODAL',
 };
 
 export default {
