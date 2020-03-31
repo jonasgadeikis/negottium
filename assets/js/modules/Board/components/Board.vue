@@ -21,3 +21,26 @@
         },
     }
 </script>
+
+<style scoped lang="scss">
+    @import '../../../../css/colors.scss';
+
+    .Board {
+        padding: 20px;
+        color: $color-title;
+        font-size: 18px;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+            z-index: 30000;
+        }
+
+        &-iconColor {
+            color: $color-primary;
+        }
+    }
+</style>

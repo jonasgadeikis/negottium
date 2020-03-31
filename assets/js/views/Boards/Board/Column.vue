@@ -101,3 +101,27 @@
         },
     }
 </script>
+
+<style scoped lang="scss">
+    @import '../../../../css/colors.scss';
+
+    .Column {
+        @media (min-width: 400px) {
+            max-width: 33.33%;
+            flex-basis: 33.33%;
+        }
+
+        flex-grow: 1;
+        flex-basis: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s linear;
+
+        &-title {
+            color: $color-columnTitle;
+            margin: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+</style>

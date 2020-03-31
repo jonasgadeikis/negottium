@@ -10,6 +10,7 @@
             {'Button-floating--left': left},
             {'Button-floating--right': right},
             {'Button-form': form},
+            {'Button-sidebar': sidebar},
         ]"
         @click.prevent="click"
     >
@@ -41,6 +42,9 @@
             form: {
                 type: Boolean,
             },
+            sidebar: {
+                type: Boolean,
+            },
         },
 
         methods: {
@@ -50,3 +54,66 @@
         },
     }
 </script>
+
+<style scoped lang="scss">
+    @import '../../css/colors.scss';
+
+    .Button {
+        display: flex;
+        padding: 5px;
+        border-radius: 5px;
+        color: $color-white;
+        border: none;
+        align-items: center;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s linear;
+        text-transform: uppercase;
+
+        &:hover {
+            box-shadow: 0 0 10px 0 $color-panelHover;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &-form {
+            padding: 10px 30px;
+        }
+
+        &--green {
+            background-color: $color-success;
+        }
+
+        &--red {
+            background-color: $color-error;
+        }
+
+        &--yellow {
+            background-color: $color-warning;
+        }
+
+        &-floating {
+            border-radius: 50%;
+            position: fixed;
+            bottom: 20px;
+            padding: 10px;
+            z-index: 10000;
+            box-shadow: 0 0 10px 0 $color-panelShadow;
+
+            &--left {
+                left: 20px;
+            }
+
+            &--right {
+                right: 20px;
+            }
+        }
+
+        &-sidebar {
+            background-color: transparent;
+        }
+    }
+
+</style>
