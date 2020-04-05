@@ -1,2 +1,16 @@
+@import 'animations.scss';
 @import 'colors.scss';
 @import 'global.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Times New Roman', serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}

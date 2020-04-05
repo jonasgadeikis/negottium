@@ -1,11 +1,8 @@
-import { TASK_STATE } from './state';
-
-export const TASK_GETTERS = {
-    GET_TASK_PRIORITIES: 'GET_TASK_PRIORITIES',
-};
+import { TASK_GETTERS } from '../constants';
+import { TASK_STATE } from '../constants';
 
 export default {
-    [TASK_GETTERS.GET_TASK_PRIORITIES]: (state) => {
-        return state[TASK_STATE.TASK_PRIORITIES];
+    [TASK_GETTERS.GET_LOADING_STATE]: (state) => {
+        return state[TASK_STATE.LOADING];
     },
 };

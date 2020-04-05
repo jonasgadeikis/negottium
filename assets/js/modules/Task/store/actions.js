@@ -1,8 +1,5 @@
-import {TASK_MUTATIONS} from './mutations';
-
-export const TASK_ACTIONS = {
-
-};
+import { TASK_ACTIONS } from '../constants';
+import { TASK_MUTATIONS } from '../constants';
 
 export default {
 

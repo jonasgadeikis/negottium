@@ -1,6 +1,7 @@
 <template>
     <label class="Input">
         <input
+            :type="type"
             :maxlength="maximum"
             class="Input-value"
             v-model="value"
@@ -9,7 +10,7 @@
 
         <div class="Input-label">
             <span>{{ name }}</span>
-            <span>{{ value.length }} / {{ maximum }}</span>
+            <span v-if="showLength">{{ value.length }} / {{ maximum }}</span>
         </div>
     </label>
 </template>
@@ -23,9 +24,15 @@
             },
             maximum: {
                 type: String,
-                required: true,
+            },
+            showLength: {
+                type: Boolean,
             },
             model: {
+                type: String,
+                required: true,
+            },
+            type: {
                 type: String,
                 required: true,
             },

@@ -1,8 +1,5 @@
-import { SIDEBAR_STATE } from './state';
-
-export const SIDEBAR_GETTERS = {
-    GET_MENU_STATE: 'GET_MENU_STATE',
-};
+import { SIDEBAR_GETTERS } from '../constants';
+import { SIDEBAR_STATE } from '../constants';
 
 export default {
     [SIDEBAR_GETTERS.GET_MENU_STATE]: (state) => {

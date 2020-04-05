@@ -27,17 +27,17 @@
         </div>
 
         <Empty
-            v-if="!GET_ACTIVE_BOARD.tasks.length && !loading"
+            v-if="!GET_ACTIVE_BOARD.tasks.length && !GET_LOADING_STATE"
             message="This Board has no tasks. Would You like to create one?"
         />
 
-        <Modal :is-open="modal">
-            <Create @cancel="toggleModal" />
+        <Modal :is-open="GET_MODAL_STATE">
+            <Create />
         </Modal>
 
-        <Spinner v-show="loading" :active="loading" />
+        <Spinner v-show="GET_LOADING_STATE" :active="GET_LOADING_STATE" />
 
-        <Button green floating left @click="toggleModal">
+        <Button green floating left @click="TOGGLE_MODAL(true)">
             <span class="material-icons">add</span>
         </Button>
 
@@ -49,9 +49,9 @@
 
 <script>
     import { mapActions, mapGetters } from 'vuex';
-    import { namespace as BOARD_NAMESPACE } from '../../../modules/Board/store';
-    import { BOARD_ACTIONS } from '../../../modules/Board/store/actions';
-    import { BOARD_GETTERS } from '../../../modules/Board/store/getters';
+    import { namespace as BOARD_NAMESPACE } from '../../../modules/Board/constants';
+    import { BOARD_ACTIONS } from '../../../modules/Board/constants';
+    import { BOARD_GETTERS } from '../../../modules/Board/constants';
     import Button from '../../../components/Button';
     import Column from './Column';
     import Create from '../../../modules/Task/components/Create';
@@ -62,41 +62,23 @@
     import Title from '../../../components/Title';
 
     export default {
-        async created() {
-            await new Promise((resolve) => {
-                this.loading = true;
-                setTimeout(() => {
-                    const payload = {
-                        id: this.$route.params.id,
-                        token: this.token,
-                    };
-
-                    this.FETCH_ACTIVE_BOARD(payload);
-                    resolve();
-                }, 2000);
-            });
-
-            this.loading = false;
+        created() {
+            this.FETCH_ACTIVE_BOARD(this.$route.params.id);
         },
         data() {
             return {
-                token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODU0ODE3MDUsImV4cCI6MTU4NjA4NjUwNSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiam9uYXMxMjNAdGVzdC5jb20ifQ.N0oqUp5cLrD_OEnSfTbFJXQPDFDzFrG2lGpaGPC3cAqWWvWne_R-30fbBuP1un5FelGiSbqBdvmiFz8VvacHEkofUK6TE5dX4qW4out3XKxOY_5jOt8C4XF3zmmIRJnSyNjV9QCzMdAo7Zhn5ld5ThJXammJgvJrJhAq_hsXZGj5zLlaqMwXCgCpLVtEyy6NQ7kGLZuverSBP93XzvV3XaZNTSnztB0aGFiZpOOrADfhpcoWWPxG1SWdOv2VhNRr1Eu2LN_Eo17lHAeTZ8WXwA7l3gLibB5bVyU0REwMO8h_HVaQ20fiRsFNMDe7Wkn9xdl76OWRdnkYWfPeaz_h7YhwJjQMESxj2Wb7lIvcpw7O_G1Ai-zLtXKvYBTYFcX_YM4mJi8cZ0KyPqcvndGwd_F3Yq4PueSIO6kVJOWrAmbkLxlii7OLXy5t6PnkQUVKhG1-EsjY_o5r87XxEgMxjInzWolXIht99mDWqu2LISV6DtYDXoPqvLBzAgH9BXbia5Vvwb8gDqb_DLPK_uw7anwnnhnZryCaggOB-sloz-RH4GmzGP7o1_-4W_DBfLRVQpc8Ai2bIk3wqjlvnpGmAFsCg2Dv4ocNvva7HgruEONKuuGP69d8zU8otwS0IdHj6AkTsxJJSvWEtM04BgwizqQHFDRHLwyRdJTJixyTPnY',
-                modal: false,
-                loading: false,
+
             }
         },
         methods: {
             ...mapActions({
                 'FETCH_ACTIVE_BOARD': `${BOARD_NAMESPACE}/${BOARD_ACTIONS.FETCH_ACTIVE_BOARD}`,
                 'RESET_COLUMNS_COLOR': `${BOARD_NAMESPACE}/${BOARD_ACTIONS.RESET_COLUMNS_COLOR}`,
+                'TOGGLE_MODAL': `${BOARD_NAMESPACE}/${BOARD_ACTIONS.TOGGLE_MODAL}`,
             }),
 
             goBack() {
                 this.$router.go(-1);
-            },
-
-            toggleModal() {
-                this.modal = !this.modal;
             },
         },
         computed: {
@@ -105,6 +87,8 @@
                 'GET_TO_DO_TASKS': `${BOARD_NAMESPACE}/${BOARD_GETTERS.GET_TO_DO_TASKS}`,
                 'GET_IN_PROGRESS_TASKS': `${BOARD_NAMESPACE}/${BOARD_GETTERS.GET_IN_PROGRESS_TASKS}`,
                 'GET_COMPLETED_TASKS': `${BOARD_NAMESPACE}/${BOARD_GETTERS.GET_COMPLETED_TASKS}`,
+                'GET_LOADING_STATE': `${BOARD_NAMESPACE}/${BOARD_GETTERS.GET_LOADING_STATE}`,
+                'GET_MODAL_STATE': `${BOARD_NAMESPACE}/${BOARD_GETTERS.GET_MODAL_STATE}`,
             }),
         },
         components: {

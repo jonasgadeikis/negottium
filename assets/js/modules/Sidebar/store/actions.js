@@ -1,8 +1,5 @@
-import { SIDEBAR_MUTATIONS } from './mutations';
-
-export const SIDEBAR_ACTIONS = {
-    TOGGLE_MENU: 'TOGGLE_MENU',
-};
+import { SIDEBAR_ACTIONS } from '../constants';
+import { SIDEBAR_MUTATIONS } from '../constants';
 
 export default {
     [SIDEBAR_ACTIONS.TOGGLE_MENU]: ({commit}) => {
