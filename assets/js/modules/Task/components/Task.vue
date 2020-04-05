@@ -36,9 +36,9 @@
 </template>
 
 <script>
-    import {mapActions} from 'vuex';
-    import {namespace as BOARD_NAMESPACE} from '../../Board/store';
-    import {BOARD_ACTIONS} from '../../Board/store/actions';
+    import { mapActions } from 'vuex';
+    import { namespace as BOARD_NAMESPACE } from '../../Board/constants';
+    import { BOARD_ACTIONS } from '../../Board/constants';
     import TASK_CONSTANTS from '../constants';
     import Button from '../../../components/Button';
 

@@ -1,9 +1,4 @@
-export const BOARD_STATE = {
-    BOARDS: 'BOARDS',
-    ACTIVE_BOARD: 'ACTIVE_BOARD',
-    DRAGGED_TASK: 'DRAGGED_TASK',
-    COLUMNS: 'COLUMNS',
-};
+import { BOARD_STATE } from '../constants';
 
 export default {
     [BOARD_STATE.BOARDS]: [],
@@ -33,4 +28,6 @@ export default {
             ],
         },
     ],
+    [BOARD_STATE.LOADING]: false,
+    [BOARD_STATE.MODAL_STATE]: false,
 };

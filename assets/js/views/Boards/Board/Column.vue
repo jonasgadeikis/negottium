@@ -18,10 +18,10 @@
 </template>
 
 <script>
-    import {mapActions, mapGetters} from 'vuex';
-    import {namespace as BOARD_NAMESPACE} from '../../../modules/Board/store';
-    import {BOARD_ACTIONS} from '../../../modules/Board/store/actions';
-    import {BOARD_GETTERS} from '../../../modules/Board/store/getters';
+    import { mapActions, mapGetters } from 'vuex';
+    import { namespace as BOARD_NAMESPACE } from '../../../modules/Board/constants';
+    import { BOARD_ACTIONS } from '../../../modules/Board/constants';
+    import {BOARD_GETTERS } from '../../../modules/Board/constants';
     import Panel from '../../../components/Panel';
     import Task from '../../../modules/Task/components/Task';
 

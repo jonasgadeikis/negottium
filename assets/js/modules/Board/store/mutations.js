@@ -1,14 +1,5 @@
-import {BOARD_STATE} from './state';
-
-export const BOARD_MUTATIONS = {
-    SET_BOARDS: 'SET_BOARDS',
-    SET_ACTIVE_BOARD: 'SET_ACTIVE_BOARD',
-    SET_DRAGGED_TASK: 'SET_DRAGGED_TASK',
-    SET_COLUMNS_COLOR: 'SET_COLUMNS_COLOR',
-    SET_TASK_STATUS: 'SET_TASK_STATUS',
-    SET_CREATED_BOARD: 'SET_CREATED_BOARD',
-    SET_CREATED_TASK: 'SET_CREATED_TASK',
-};
+import { BOARD_MUTATIONS } from '../constants';
+import { BOARD_STATE } from '../constants';
 
 export default {
     [BOARD_MUTATIONS.SET_BOARDS]: (state, payload) => {
@@ -41,11 +32,17 @@ export default {
 
     [BOARD_MUTATIONS.SET_CREATED_BOARD]: (state, payload) => {
         state[BOARD_STATE.BOARDS].push(payload);
-        document.getElementById('modal').style.display = 'none';
     },
 
     [BOARD_MUTATIONS.SET_CREATED_TASK]: (state, payload) => {
         state[BOARD_STATE.ACTIVE_BOARD].tasks.push(payload);
-        document.getElementById('modal').style.display = 'none';
+    },
+
+    [BOARD_MUTATIONS.SET_LOADING_STATE]: (state) => {
+        state[BOARD_STATE.LOADING] = !state[BOARD_STATE.LOADING];
+    },
+
+    [BOARD_MUTATIONS.SET_MODAL_STATE]: (state, payload) => {
+        state[BOARD_STATE.MODAL_STATE] = payload;
     },
 };

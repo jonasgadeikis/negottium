@@ -7,6 +7,7 @@
 
 <script>
     import Button from '../../components/Button';
+
     export default {
         props: {
             message: {

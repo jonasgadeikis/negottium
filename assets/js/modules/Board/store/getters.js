@@ -1,14 +1,5 @@
-import {BOARD_STATE} from './state';
-
-export const BOARD_GETTERS = {
-    GET_BOARDS: 'GET_BOARDS',
-    GET_ACTIVE_BOARD: 'GET_ACTIVE_BOARD',
-    GET_TO_DO_TASKS: 'GET_TO_DO_TASKS',
-    GET_IN_PROGRESS_TASKS: 'GET_IN_PROGRESS_TASKS',
-    GET_COMPLETED_TASKS: 'GET_COMPLETED_TASKS',
-    GET_DRAGGED_TASK: 'GET_DRAGGED_TASK',
-    GET_COLUMNS: 'GET_COLUMNS',
-};
+import { BOARD_GETTERS } from '../constants';
+import { BOARD_STATE } from '../constants';
 
 export default {
     [BOARD_GETTERS.GET_BOARDS]: (state) => {
@@ -43,5 +34,13 @@ export default {
 
     [BOARD_GETTERS.GET_COLUMNS]: (state) => {
         return state[BOARD_STATE.COLUMNS];
+    },
+
+    [BOARD_GETTERS.GET_LOADING_STATE]: (state) => {
+        return state[BOARD_STATE.LOADING];
+    },
+
+    [BOARD_GETTERS.GET_MODAL_STATE]: (state) => {
+        return state[BOARD_STATE.MODAL_STATE];
     },
 };

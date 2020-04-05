@@ -1,6 +1,4 @@
-export const SIDEBAR_STATE = {
-    MENU_STATE: 'MENU_STATE',
-};
+import { SIDEBAR_STATE } from '../constants';
 
 export default {
     [SIDEBAR_STATE.MENU_STATE]: false,

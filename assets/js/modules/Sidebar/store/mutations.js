@@ -1,8 +1,5 @@
-import  { SIDEBAR_STATE } from './state';
-
-export const SIDEBAR_MUTATIONS = {
-    SET_MENU_STATE: 'SET_MENU_STATE',
-};
+import { SIDEBAR_MUTATIONS } from '../constants';
+import  { SIDEBAR_STATE } from '../constants';
 
 export default {
     [SIDEBAR_MUTATIONS.SET_MENU_STATE]: (state) => {

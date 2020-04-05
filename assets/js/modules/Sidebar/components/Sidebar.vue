@@ -7,27 +7,25 @@
 
             <Title sidebar name="Negottium" />
 
-            <Button sidebar>
+            <Button sidebar @click="LOGOUT">
                 <Icon name="lock" />
             </Button>
         </div>
-        <div :class="{'Sidebar-menu--open': GET_MENU_STATE}" class="Sidebar-menu">
+
+        <div
+            class="Sidebar-menu"
+            :class="{'Sidebar-menu--open': GET_MENU_STATE}"
+        >
             <ul class="Sidebar-menuList">
-                <li class="Sidebar-menuListItem">
-                    <Icon name="home" />
-                    <span class="Sidebar-menuListItemName">Home</span>
-                </li>
-                <li class="Sidebar-menuListItem">
-                    <Icon name="settings" />
-                    <span class="Sidebar-menuListItemName">Settings</span>
-                </li>
-                <li class="Sidebar-menuListItem">
-                    <Icon name="info" />
-                    <span class="Sidebar-menuListItemName">Information</span>
-                </li>
-                <li class="Sidebar-menuListItem">
-                    <Icon name="sentiment_satisfied_alt" />
-                    <span class="Sidebar-menuListItemName">Patreon</span>
+                <li
+                    class="Sidebar-menuListItem"
+                    v-for="(option, i) in options"
+                    :key="i"
+                >
+                    <Icon :name="option.icon" />
+                    <span class="Sidebar-menuListItemName">
+                        {{ option.name }}
+                    </span>
                 </li>
             </ul>
         </div>
@@ -36,9 +34,11 @@
 
 <script>
     import { mapActions, mapGetters } from 'vuex';
-    import { namespace as SIDEBAR_NAMESPACE } from '../store';
-    import { SIDEBAR_ACTIONS } from '../store/actions';
-    import { SIDEBAR_GETTERS } from '../store/getters';
+    import { namespace as AUTH_NAMESPACE } from '../../Authentication/constants';
+    import { AUTH_ACTIONS } from '../../Authentication/constants';
+    import { namespace as SIDEBAR_NAMESPACE } from '../constants';
+    import { SIDEBAR_ACTIONS } from '../constants';
+    import { SIDEBAR_GETTERS } from '../constants';
     import Button from '../../../components/Button';
     import Icon from '../../../components/Icon';
     import Title from '../../../components/Title';
@@ -46,6 +46,7 @@
     export default {
         methods: {
             ...mapActions({
+                'LOGOUT': `${AUTH_NAMESPACE}/${AUTH_ACTIONS.LOGOUT}`,
                 'TOGGLE_MENU': `${SIDEBAR_NAMESPACE}/${SIDEBAR_ACTIONS.TOGGLE_MENU}`,
             }),
         },
@@ -59,6 +60,24 @@
         data() {
             return {
                 state: false,
+                options: [
+                    {
+                        name: 'Home',
+                        icon: 'home',
+                    },
+                    {
+                        name: 'Profile',
+                        icon: 'person',
+                    },
+                    {
+                        name: 'News',
+                        icon: 'info',
+                    },
+                    {
+                        name: 'Patreon',
+                        icon: 'sentiment_satisfied_alt',
+                    },
+                ]
             }
         },
 

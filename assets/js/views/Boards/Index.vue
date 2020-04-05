@@ -9,17 +9,17 @@
         </Panel>
 
         <Empty
-            v-if="!GET_BOARDS.length && !loading"
+            v-if="!GET_BOARDS.length && !GET_LOADING_STATE"
             message="You don't have a Board yet. Would you like to create one?"
         />
 
-        <Modal :is-open="modal">
-            <Create @cancel="toggleModal" />
+        <Modal :is-open="GET_MODAL_STATE">
+            <Create />
         </Modal>
 
-        <Spinner v-show="loading" :active="loading" />
+        <Spinner v-show="GET_LOADING_STATE" :active="GET_LOADING_STATE" />
 
-        <Button green floating left @click="toggleModal">
+        <Button green floating left @click="TOGGLE_MODAL(true)">
             <span class="material-icons">add</span>
         </Button>
     </div>
@@ -27,9 +27,9 @@
 
 <script>
     import { mapActions, mapGetters } from 'vuex';
-    import { namespace as BOARD_NAMESPACE } from '../../modules/Board/store';
-    import { BOARD_ACTIONS } from '../../modules/Board/store/actions';
-    import { BOARD_GETTERS } from '../../modules/Board/store/getters';
+    import { namespace as BOARD_NAMESPACE } from '../../modules/Board/constants';
+    import { BOARD_ACTIONS } from '../../modules/Board/constants';
+    import { BOARD_GETTERS } from '../../modules/Board/constants';
     import Board from '../../modules/Board/components/Board';
     import Button from '../../components/Button';
     import Create from '../../modules/Board/components/Create';
@@ -40,41 +40,25 @@
     import Title from '../../components/Title';
 
     export default {
-        async created() {
-            await new Promise((resolve) => {
-                this.loading = true;
-                setTimeout(() => {
-                    this.FETCH_BOARDS(this.token);
-                    resolve();
-                }, 2000);
-            });
-
-            this.loading = false;
-        },
-
-        data() {
-            return {
-                token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODU0ODE3MDUsImV4cCI6MTU4NjA4NjUwNSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiam9uYXMxMjNAdGVzdC5jb20ifQ.N0oqUp5cLrD_OEnSfTbFJXQPDFDzFrG2lGpaGPC3cAqWWvWne_R-30fbBuP1un5FelGiSbqBdvmiFz8VvacHEkofUK6TE5dX4qW4out3XKxOY_5jOt8C4XF3zmmIRJnSyNjV9QCzMdAo7Zhn5ld5ThJXammJgvJrJhAq_hsXZGj5zLlaqMwXCgCpLVtEyy6NQ7kGLZuverSBP93XzvV3XaZNTSnztB0aGFiZpOOrADfhpcoWWPxG1SWdOv2VhNRr1Eu2LN_Eo17lHAeTZ8WXwA7l3gLibB5bVyU0REwMO8h_HVaQ20fiRsFNMDe7Wkn9xdl76OWRdnkYWfPeaz_h7YhwJjQMESxj2Wb7lIvcpw7O_G1Ai-zLtXKvYBTYFcX_YM4mJi8cZ0KyPqcvndGwd_F3Yq4PueSIO6kVJOWrAmbkLxlii7OLXy5t6PnkQUVKhG1-EsjY_o5r87XxEgMxjInzWolXIht99mDWqu2LISV6DtYDXoPqvLBzAgH9BXbia5Vvwb8gDqb_DLPK_uw7anwnnhnZryCaggOB-sloz-RH4GmzGP7o1_-4W_DBfLRVQpc8Ai2bIk3wqjlvnpGmAFsCg2Dv4ocNvva7HgruEONKuuGP69d8zU8otwS0IdHj6AkTsxJJSvWEtM04BgwizqQHFDRHLwyRdJTJixyTPnY',
-                modal: false,
-                loading: false,
-            }
+        created() {
+            this.FETCH_BOARDS();
         },
 
         methods: {
             ...mapActions({
                 'FETCH_BOARDS': `${BOARD_NAMESPACE}/${BOARD_ACTIONS.FETCH_BOARDS}`,
+                'TOGGLE_MODAL': `${BOARD_NAMESPACE}/${BOARD_ACTIONS.TOGGLE_MODAL}`,
             }),
             openBoard(board) {
                 this.$router.push(`/board/${board.id}`);
             },
-            toggleModal() {
-                this.modal = !this.modal;
-            }
         },
 
         computed: {
             ...mapGetters({
                 'GET_BOARDS': `${BOARD_NAMESPACE}/${BOARD_GETTERS.GET_BOARDS}`,
+                'GET_LOADING_STATE': `${BOARD_NAMESPACE}/${BOARD_GETTERS.GET_LOADING_STATE}`,
+                'GET_MODAL_STATE': `${BOARD_NAMESPACE}/${BOARD_GETTERS.GET_MODAL_STATE}`,
             }),
         },
 
