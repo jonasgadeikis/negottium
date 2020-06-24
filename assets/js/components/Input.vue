@@ -6,6 +6,7 @@
             class="Input-value"
             v-model="value"
             @input="$emit('update:model', value)"
+            @keydown.enter="$emit('enter')"
         >
 
         <div class="Input-label">

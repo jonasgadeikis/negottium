@@ -11,7 +11,9 @@
             {'Button-floating--right': right},
             {'Button-form': form},
             {'Button-sidebar': sidebar},
+            {'Button--disabled': disabled},
         ]"
+        :disabled="disabled"
         @click.prevent="click"
     >
         <slot />
@@ -45,6 +47,9 @@
             sidebar: {
                 type: Boolean,
             },
+            disabled: {
+                type: Boolean,
+            },
         },
 
         methods: {
@@ -76,6 +81,11 @@
 
         &:focus {
             outline: none;
+        }
+
+        &--disabled {
+            pointer-events: none;
+            background-color: $color-disabled !important;
         }
 
         &-form {

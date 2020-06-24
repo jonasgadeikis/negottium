@@ -3,6 +3,8 @@ import { POST, setAuthToken } from '../../../api';
 import Cookie from 'js-cookie';
 import { AUTH_ACTIONS } from '../constants';
 import router from '../../../router';
+import { SNACKBAR_MUTATIONS } from '../../Snackbar/constants';
+import { namespace as SNACKBAR_NAMESPACE } from '../../Snackbar/constants';
 
 export default {
     [AUTH_ACTIONS.LOGIN]: ({commit}, payload) => {
@@ -14,7 +16,10 @@ export default {
                 commit(AUTH_MUTATIONS.SET_LOGGED_IN, true);
                 router.push('/boards');
             }).catch(error => {
-                console.log(error);
+                const messages = [];
+
+                messages.push(error.response.data);
+                commit(`${SNACKBAR_NAMESPACE}/${SNACKBAR_MUTATIONS.SET_MESSAGES}`, messages, { root: true });
             }).finally(() => {
                 commit(AUTH_MUTATIONS.SET_LOADING_STATE);
             });
@@ -30,7 +35,7 @@ export default {
     [AUTH_ACTIONS.REGISTER]: ({commit, dispatch}, payload) => {
         commit(AUTH_MUTATIONS.SET_LOADING_STATE);
         setTimeout(() => {
-            POST('register', payload).then(response => {
+            POST('register', payload).then(() => {
                 const user = {
                     username: payload.email,
                     password: payload.password,
@@ -38,7 +43,10 @@ export default {
 
                 dispatch(AUTH_ACTIONS.LOGIN, user);
             }).catch(error => {
-                console.log(error);
+                const messages = [];
+
+                messages.push(error.response.data);
+                commit(`${SNACKBAR_NAMESPACE}/${SNACKBAR_MUTATIONS.SET_MESSAGES}`, messages, { root: true });
             }).finally(() => {
                 commit(AUTH_MUTATIONS.SET_LOADING_STATE);
             });

@@ -2,6 +2,8 @@
     <div class="RegisterPage">
         <Register />
 
+        <Snackbar />
+
         <Button red floating right @click="">
             <span class="material-icons">keyboard_backspace</span>
         </Button>
@@ -9,13 +11,26 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
+    import {
+        namespace as AUTH_NAMESPACE,
+        AUTH_GETTERS,
+    } from '../../modules/Authentication/constants';
     import Button from '../../components/Button';
     import Register from '../../modules/Authentication/components/Register';
+    import Snackbar from '../../modules/Snackbar/components/Snackbar';
 
     export default {
+        computed: {
+            ...mapGetters({
+                'GET_MESSAGES': `${AUTH_NAMESPACE}/${AUTH_GETTERS.GET_MESSAGES}`,
+            })
+        },
+
         components: {
             Button,
             Register,
+            Snackbar,
         },
     }
 </script>

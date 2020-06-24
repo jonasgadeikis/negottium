@@ -36,10 +36,6 @@ class BoardController extends AbstractController
 
         $boards = $boardRepository->findAllBoardsByUserId($user->getId());
 
-        if (!$boards) {
-            return $this->createNotFoundResponse();
-        }
-
         $response = $this->serialize($boards, 'json', ['board.default']);
 
         return $this->createSuccessResponse($response);

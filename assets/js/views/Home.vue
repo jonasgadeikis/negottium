@@ -1,31 +1,141 @@
 <template>
+    <div class="LandingPage">
+        <div class="LandingPage-headerContainer">
+            <div class="LandingPage-header">
+                <router-link to="/" class="LandingPage-headerLink">Negottium</router-link>
+                <div>
+                    <router-link to="/login" class="LandingPage-headerLink">Login</router-link>
+                    <router-link to="/register" class="LandingPage-headerLink">Register</router-link>
+                </div>
+            </div>
+        </div>
 
+        <div class="LandingPage-bodyContainer">
+            <div class="LandingPage-body">
+                <div class="LandingPage-mainImage">
+                    <img src="../../images/landing-page-main.svg">
+                </div>
+                <div class="LandingPage-mainSlogan">
+                    <span>Organize Your Daily Life With The Help Of Negottium</span>
+                    <div class="LandingPage-mainSloganAction">
+                        <Button form green @click="toRegister">Get Started</Button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="LandingPage-footerContainer">
+            <div class="LandingPage-footer">
+                <span>Copyright © 2020 Negottium</span>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
+    import Button from '../components/Button';
 
     export default {
-        data() {
-            return {
-                token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1ODQ3ODI0MzEsImV4cCI6MTU4NTM4NzIzMSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiam9uYXMxMjNAdGVzdC5jb20ifQ.cYyQo8reQPQ2A4CKXd3m3Nc0zYK4nTnerBjNXE4KfgDgaMpHg9BUya6SyoQy43e2iP_I10JwHgjO2h4NIWl3MaQWDq4VdRKQ_Ei09zNOWF9oH41WYxTgaAVy6KyvGVWwKCGMBWJwaQuLUm_Fv1JVIlkDoeL3jSRVr94UHkrgxcqzmbrwzoBPhgvoKZzRg6TYjj4qr1fqoF8JL5kOhULDRe9bQtemRzWMsQ8o7SqoBP0h_HXtULeef53OpJwezFtaZDQP8_sdqc9MFI0Yr7_Ji3GH08AL88ojJKb6GZwKiNxg4VWkNtTe99OTDaHMWDHdntClzuH4wXQHPOT_OSCPFC0wE_rj6mSLhXxXndFDBEfsTuyPEtObMpGvtJY-LbIbYD7X1wAyXFVw4sOqSFO5w2-xDkEJM5DmU_JFH49fyhqqBO5z-OayCOd8mS1tIbnBc54aypW62UHOqUQ-UKK75ajxbm0Nhi5OkQuX2HYc6baB3OnEEuS5XHWkVNrX4Iaj5OrRr0G6OBl9FYpLBV-1HQWLX4MeKsyQOaKIlG78vWaVxQZq-U_ilhup-SzxiSdfIJ3shaaskYMFbNM4XPWrlSWdR9nP0tjJHUAiWm0E8rRX1vrGg0YevkeWN4FHs1SRkRVfNLy4QRUI9xuL-3KcKRyCgGR5HVJz-C3BDgm9pm8',
-
-            }
-        },
         methods: {
-
+            toRegister() {
+                this.$router.push('/register');
+            },
         },
-        components: {
 
+        components: {
+            Button,
         },
     }
 </script>
 
 <style scoped lang="scss">
-    .mt-big {
-        margin-top: 100px;
+    @import '../../css/colors.scss';
+
+    .LandingPage {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+
+        &-header {
+            height: 100px;
+            width: 70%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: $color-white;
+            position: relative;
+
+            &Container {
+                background: linear-gradient($color-primary, $color-secondary);
+            }
+
+            &Link {
+                color: $color-white;
+                text-decoration: none;
+                margin: 0 20px;
+
+                &:hover {
+                    color: $color-text;
+                }
+            }
+        }
+
+        &-mainImage {
+            position: absolute;
+            top: 20%;
+            left: 20px;
+        }
+
+        &-mainSlogan {
+            font-size: 50px;
+            font-weight: 600;
+            z-index: 10000;
+            width: 50%;
+            color: $color-primary;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+
+            &Action {
+                margin-top: 20px;
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        &-body {
+            width: 100%;
+            flex-grow: 1;
+            padding: 20px 30px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            &Container {
+                display: flex;
+                flex-grow: 1;
+            }
+        }
+
+        &-footer {
+            height: 100px;
+            width: 70%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: $color-white;
+
+            &Container {
+                background-color: #000000b8;
+            }
+        }
     }
 
-    .mt-small {
-        margin-top: 20px;
+    img {
+        width: 75%;
     }
 </style>

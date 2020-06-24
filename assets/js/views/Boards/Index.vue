@@ -3,7 +3,7 @@
         <Title page name="My Boards" />
 
         <Panel v-for="board in GET_BOARDS" :key="board.id">
-            <template v-slot:body>
+            <template v-slot:body v-show="!GET_LOADING_STATE">
                 <Board :name="board.name" @click="openBoard(board)" />
             </template>
         </Panel>

@@ -17,11 +17,26 @@
                         name="Password"
                         type="password"
                         :model.sync="credentials.password"
+                        @enter="LOGIN(credentials)"
                     />
                 </div>
 
+                <div class="Login-register">
+                    <p>
+                        <span>Don't have an account?</span>
+                        <router-link to="/register" class="Login-registerLink">
+                            Register here
+                        </router-link>
+                    </p>
+                </div>
+
                 <div class="Login-action">
-                    <Button form green @click="LOGIN(credentials)">
+                    <Button
+                        form
+                        green
+                        :disabled="isLoginEnabled"
+                        @click="LOGIN(credentials)"
+                    >
                         Log in
                     </Button>
                 </div>
@@ -63,6 +78,10 @@
             ...mapGetters({
                 'GET_LOADING_STATE': `${AUTH_NAMESPACE}/${AUTH_GETTERS.GET_LOADING_STATE}`,
             }),
+
+            isLoginEnabled() {
+                return this.credentials.username === '' || this.credentials.password === '';
+            },
         },
 
         components: {
@@ -76,6 +95,8 @@
 </script>
 
 <style scoped lang="scss">
+    @import '../../../../css/colors.scss';
+
     .Login {
         position: relative;
         padding: 20px 30px;
@@ -87,6 +108,20 @@
         &-action {
             display: flex;
             justify-content: center;
+        }
+
+        &-register {
+            color: $color-text;
+
+            &Link {
+                color: $color-priorityLow;
+                cursor: pointer;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 </style>

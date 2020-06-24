@@ -2,6 +2,8 @@
     <div class="LoginPage">
         <Login />
 
+        <Snackbar />
+
         <Button red floating right @click="">
             <span class="material-icons">keyboard_backspace</span>
         </Button>
@@ -11,11 +13,13 @@
 <script>
     import Button from '../../components/Button';
     import Login from '../../modules/Authentication/components/Login';
+    import Snackbar from '../../modules/Snackbar/components/Snackbar';
 
     export default {
         components: {
             Button,
             Login,
+            Snackbar,
         },
     }
 </script>
