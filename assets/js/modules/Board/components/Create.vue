@@ -10,7 +10,13 @@
         />
 
         <div class="CreateBoard-actions">
-            <Button form green @click="createBoard(board)">Create</Button>
+            <Button
+                form green
+                :disabled="isCreateDisabled"
+                @click="createBoard(board)"
+            >
+                Create
+            </Button>
             <Button form red @click="TOGGLE_MODAL(false)">Cancel</Button>
         </div>
 
@@ -53,6 +59,7 @@
 
             createBoard(board) {
                 this.loading = true;
+                console.log(board);
                 setTimeout(() => {
                     POST('board/create', board).then(response => {
                         this.SET_CREATED_BOARD(response.data);
@@ -63,6 +70,12 @@
                         this.loading = false;
                     });
                 }, 2000);
+            }
+        },
+
+        computed: {
+            isCreateDisabled() {
+                return this.board.name === '';
             }
         },
 

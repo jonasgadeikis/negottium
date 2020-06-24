@@ -20,3 +20,7 @@ export const AUTH_ACTIONS = {
     REGISTER: 'REGISTER',
     LOGOUT: 'LOGOUT',
 };
+
+export default {
+    MIN_PASSWORD_LENGTH: 6,
+}

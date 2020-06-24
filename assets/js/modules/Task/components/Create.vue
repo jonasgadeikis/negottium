@@ -29,7 +29,13 @@
         </div>
 
         <div class="CreateTask-actions">
-            <Button form green @click="createTask(task, GET_ACTIVE_BOARD)">Create</Button>
+            <Button
+                form green
+                :disabled="isCreateDisabled"
+                @click="createTask(task, GET_ACTIVE_BOARD)"
+            >
+                Create
+            </Button>
             <Button form red @click="TOGGLE_MODAL(false)">Cancel</Button>
         </div>
 
@@ -115,6 +121,10 @@
             ...mapGetters({
                 'GET_ACTIVE_BOARD': `${BOARD_NAMESPACE}/${BOARD_GETTERS.GET_ACTIVE_BOARD}`,
             }),
+
+            isCreateDisabled() {
+                return this.task.name === '' || this.task.priority === '';
+            },
         },
 
         components: {

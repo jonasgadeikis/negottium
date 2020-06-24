@@ -1,8 +1,12 @@
 login:
   path: /api/login
 
+#home:
+#  path: /
+#  controller: App\Controller\HomeController::index
+
 index:
-  path: /{wildcard}
+  path: /*
   controller: App\Controller\HomeController::index
-  requirements:
-    wildcard: .*
+#  requirements:
+#    wildcard: *

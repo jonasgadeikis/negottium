@@ -63,7 +63,9 @@
 
     export default {
         created() {
-            this.FETCH_ACTIVE_BOARD(this.$route.params.id);
+            if (this.GET_ACTIVE_BOARD.id !== Number(this.$route.params.id)) {
+                this.FETCH_ACTIVE_BOARD(this.$route.params.id);
+            }
         },
         data() {
             return {

@@ -35,6 +35,16 @@ class Board
     private $name;
 
     /**
+     * @JMS\Groups({"board.default", "board.single"})
+     * @JMS\Type("string")
+     *
+     * @ORM\Column(type="string", length=3, nullable=true)
+     *
+     * @var string
+     */
+    private $alias;
+
+    /**
      * @JMS\Exclude()
      *
      * @ORM\ManyToOne(targetEntity="User", inversedBy="boards")
@@ -100,5 +110,21 @@ class Board
     public function setTasks($tasks): void
     {
         $this->tasks = $tasks;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlias(): string
+    {
+        return $this->alias;
+    }
+
+    /**
+     * @param string $alias
+     */
+    public function setAlias(string $alias): void
+    {
+        $this->alias = $alias;
     }
 }

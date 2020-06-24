@@ -16,10 +16,16 @@ const routes = [
     {
         path: '/boards',
         component: Boards,
+        meta: {
+            conditionalRoute: true,
+        },
     },
     {
         path: '/board/:id',
         component: Board,
+        meta: {
+            conditionalRoute: true,
+        },
     },
     {
         path: '/login',

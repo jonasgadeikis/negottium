@@ -33,6 +33,10 @@ class RegistrationController extends AbstractController
         $user = $this->deserialize($request->getContent(), User::class, 'json');
         $response = $userCreator->create($user);
 
-        return $this->json($response, 201);
+//        if ($response['code'] === 409) {
+//            return $this->json($response, 409);
+//        }
+
+        return $this->json($response);
     }
 }

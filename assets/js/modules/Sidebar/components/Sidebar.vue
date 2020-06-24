@@ -62,10 +62,6 @@
                 state: false,
                 options: [
                     {
-                        name: 'Home',
-                        icon: 'home',
-                    },
-                    {
                         name: 'Profile',
                         icon: 'person',
                     },

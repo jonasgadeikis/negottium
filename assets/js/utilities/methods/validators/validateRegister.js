@@ -1,19 +1,20 @@
+import CONSTANTS from '../../../modules/Authentication/constants';
+import ERRORS from '../../../errors';
+
 export default function (data) {
     const errors = [];
 
     if (!data.email) {
-        errors.push('Field Email cannot be empty.');
+        errors.push(ERRORS.EMPTY_EMAIL);
     }
 
-    if (data.password.length < 6) {
-        errors.push('Password must be at least 6 symbols long.');
+    if (data.password.length < CONSTANTS.MIN_PASSWORD_LENGTH) {
+        errors.push(ERRORS.INVALID_PASSWORD_LENGTH);
     }
 
     if (data.password !== data.repeatPassword) {
-        errors.push('Given passwords do not match.');
+        errors.push(ERRORS.PASSWORDS_DO_NOT_MATCH);
     }
 
-    console.log(errors);
-
-    return errors.length ? errors : true;
+    return errors.length ? errors : [];
 };

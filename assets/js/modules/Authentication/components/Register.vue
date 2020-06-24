@@ -29,7 +29,12 @@
                 </div>
 
                 <div class="Register-action">
-                    <Button form green @click="register(credentials)">
+                    <Button
+                        form
+                        green
+                        :disabled="isRegisterEnabled"
+                        @click="register(credentials)"
+                    >
                         Register
                     </Button>
                 </div>
@@ -41,12 +46,16 @@
 </template>
 
 <script>
-    import { mapActions, mapGetters } from 'vuex';
+    import { mapActions, mapGetters, mapMutations } from 'vuex';
     import {
         namespace as AUTH_NAMESPACE,
         AUTH_ACTIONS,
-        AUTH_GETTERS
+        AUTH_GETTERS,
     } from '../constants';
+    import {
+        namespace as SNACKBAR_NAMESPACE,
+        SNACKBAR_MUTATIONS,
+    } from '../../Snackbar/constants';
     import Button from '../../../components/Button';
     import Input from '../../../components/Input';
     import Panel from '../../../components/Panel';
@@ -70,10 +79,19 @@
                 'REGISTER': `${AUTH_NAMESPACE}/${AUTH_ACTIONS.REGISTER}`,
             }),
 
+            ...mapMutations({
+                'SET_MESSAGES': `${SNACKBAR_NAMESPACE}/${SNACKBAR_MUTATIONS.SET_MESSAGES}`,
+            }),
+
             register(credentials) {
-                if (validateRegister(credentials)) {
+                const errors = validateRegister(credentials);
+
+                if (errors.length) {
+                    this.SET_MESSAGES(errors);
+                } else {
                     this.REGISTER(credentials);
                 }
+
             },
         },
 
@@ -81,6 +99,12 @@
             ...mapGetters({
                 'GET_LOADING_STATE': `${AUTH_NAMESPACE}/${AUTH_GETTERS.GET_LOADING_STATE}`,
             }),
+
+            isRegisterEnabled() {
+                return this.credentials.email === '' ||
+                       this.credentials.password === '' ||
+                       this.credentials.repeatPassword === '';
+            },
         },
 
         components: {
